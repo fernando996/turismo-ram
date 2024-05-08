@@ -1,7 +1,7 @@
 # https://estatistica.madeira.gov.pt/download-now/ambiente-territorio/dados-meteorologicos/dados-meteorologicos-serie-retrospetiva.html?start=0
 # https://estatistica.madeira.gov.pt/download-now/economica/turismo-pt/turismo-quadros-pt.html?start=0
 
-BASE_URL = 'https://estatistica.madeira.gov.pt/download-now/'
+BASE_URL = 'https://estatistica.madeira.gov.pt'
 
 class Url:
     url = ""
@@ -12,8 +12,10 @@ class Url:
         self.url  = self.getUrlForPosition()
         
     def getUrlForPosition(self):
-        return "{}{}?start={}".format(BASE_URL, self.path, self.position)
+        return "{}/download-now/{}?start={}".format(BASE_URL, self.path, self.position)
 
+    def getBaseUrl(self):
+        return BASE_URL
 # p = Url('ambiente-territorio/dados-meteorologicos/dados-meteorologicos-serie-retrospetiva.html')
 # print(p.getUrlForPosition())
     
