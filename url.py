@@ -9,10 +9,10 @@ class Url:
 
     def __init__(self, path):
         self.path = path
-        self.url  = self.getUrlForPosition()
+        self.url  = self.getUrlForPosition(0)
         
-    def getUrlForPosition(self):
-        return "{}/download-now/{}?start={}".format(BASE_URL, self.path, self.position)
+    def getUrlForPosition(self, position):
+        return "{}/download-now/{}?start={}".format(BASE_URL, self.path, position)
 
     def getBaseUrl(self):
         return BASE_URL

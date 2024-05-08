@@ -18,11 +18,26 @@ class Files:
         if self.model['model'] not in self.data:
             self.data[self.model['model']] = []
         
+    def getHtml(self, position):
+        r = requests.get(self.urlInst.getUrlForPosition(position))
+        s = BeautifulSoup(r.content, "html.parser")
+        return s
+    
     def getHtmlDownloadFiles(self) -> list:
-        r    = requests.get(self.urlInst.getUrlForPosition())
-        soup = BeautifulSoup(r.content, "html.parser")
+        downloadUrls = []
 
-        return soup.find_all("a", {"title":"Descarregar", "class":"jd_download_url"})
+        soup = self.getHtml(0)
+        downloadUrls.append(soup.find_all("a", {"title":"Descarregar", "class":"jd_download_url"}))
+        
+        next = soup.find("a", title="Seguinte")
+        
+        while next is not None:
+            position = next['href'].split("start=")
+            soup = self.getHtml(position[1])
+            next = soup.find("a", title="Seguinte")
+            downloadUrls.append(soup.find_all("a", {"title":"Descarregar", "class":"jd_download_url"}))
+
+        return downloadUrls
             
     def getFiles(self, dir: str, url: str) :
         r        = requests.get(url, stream=True)
@@ -56,19 +71,7 @@ f = open('./dataModel/dataModels.json')
 data = json.load(f)
 files = Files(data)
 
-files.downloadFilesList(data, files.getHtmlDownloadFiles())
+for uri in files.getHtmlDownloadFiles():
+    files.downloadFilesList(data, uri)
+
 files.writeData()
-
-# r.status_code
-# 200
-
-# r.headers['content-type']
-# 'application/json; charset=utf8'
-
-# r.encoding
-# 'utf-8'
-
-# r.text
-# '{"type":"User"...'
-
-# r.json()
