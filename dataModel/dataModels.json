@@ -7,5 +7,38 @@
     "model":"tourismTables",
     "name":"Turismo - Quadros",
     "url":"economica/turismo-pt/turismo-quadros-pt.html"
-}]
+},
+{
+    "model":"tourismPublication",
+    "name":"Turismo - Publicações",
+    "url":"economica/turismo-pt/turismo-publicacoes-pt.html"
+},
+{
+    "model":"tourismRetrospective",
+    "name":"Turismo - Série retrospetiva",
+    "url":"economica/turismo-pt/turismo-serie-pt/turismo-series-longas-pt.html"
+},
+{
+    "model":"airTransportTables",
+    "name":"Transportes Aéreos - Quadros",
+    "url":"economica/transportes-e-comunicacoes/transportes-pt/transportes-quadros-pt/quadros-transportes-aereos-pt.html"
+},
+{
+    "model":"seaTransportation",
+    "name":"Transportes Marítimos  - Quadros",
+    "url":"economica/transportes-e-comunicacoes/transportes-pt/transportes-quadros-pt/quadros-transportes-mar-pt.html"
+},
+{
+    "model":"landTransport",
+    "name":"Transportes Terrestres  - Quadros",
+    "url":"economica/transportes-e-comunicacoes/transportes-pt/transportes-quadros-pt/quadros-transportes-ter-pt.html"
+},
+{
+    "model":"retrospectiveTransport",
+    "name":"Transportes - Série retrospetiva",
+    "url":"economica/transportes-e-comunicacoes/transportes-pt/transportes-serie-pt/transp-series-longas-pt.html"
+}
+]
+
+
 
