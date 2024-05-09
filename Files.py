@@ -69,9 +69,11 @@ class Files:
 
 f = open('./dataModel/dataModels.json')
 data = json.load(f)
-files = Files(data)
 
-for uri in files.getHtmlDownloadFiles():
-    files.downloadFilesList(data, uri)
+for d in data:
+    files = Files(d)
 
-files.writeData()
+    for uri in files.getHtmlDownloadFiles():
+        files.downloadFilesList(d, uri)
+
+    files.writeData()
